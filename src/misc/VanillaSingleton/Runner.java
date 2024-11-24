@@ -10,7 +10,7 @@ class VanillaSingleton implements Cloneable, Serializable {
     //    private constructor
     private VanillaSingleton() {
 //        protection against reflection
-        if (instance == null) {
+        if (instance != null) {
             throw new RuntimeException("Single instance already created!");
         }
     }
@@ -28,8 +28,12 @@ class VanillaSingleton implements Cloneable, Serializable {
     }
 
     //    protection against Serialization/De-Serialization
-    protected Object readResolve() {
+    private Object readResolve() {
         return instance;
+    }
+
+    public void test() {
+
     }
 
     //    protection against cloning
